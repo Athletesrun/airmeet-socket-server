@@ -1,0 +1,29 @@
+{
+  "name": "airmeet-socket-server",
+  "version": "0.0.1",
+  "description": "The socket.io server for sharing locations on AirMeet",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "node --debug index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athletesrun/airmeet-socket-server.git"
+  },
+  "author": "Ben Wingerter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Athletesrun/airmeet-socket-server/issues"
+  },
+  "homepage": "https://github.com/Athletesrun/airmeet-socket-server#readme",
+  "dependencies": {
+    "check-types": "^7.1.5",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
+    "knex": "^0.12.6",
+    "pg": "^6.1.2",
+    "socket.io": "^1.7.2",
+    "socketio-jwt": "^4.5.0"
+  }
+}

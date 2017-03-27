@@ -1,0 +1,43 @@
+{
+  "name": "airmeet-server",
+  "version": "0.0.1",
+  "description": "The backend to power the Airmeet app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "debug": "node --debug app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athletesrun/airmeet-server.git"
+  },
+  "author": "Ben Wingerter, Daniel Noon, Gangum Keum, Max Hobday",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Athletesrun/airmeet-server/issues"
+  },
+  "homepage": "https://github.com/Athletesrun/airmeet-server#readme",
+  "dependencies": {
+    "algorithms": "^0.10.0",
+    "bcryptjs": "^2.4.3",
+    "bcrypt": "*",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "check-types": "^7.1.5",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
+    "knex": "^0.12.6",
+    "lodash": "^4.17.4",
+    "npmi": "^2.0.1",
+    "pg": "^6.1.2",
+    "randomatic": "^1.1.6",
+    "request": "^2.79.0",
+    "socket.io": "^1.7.2",
+    "socketio-jwt": "^4.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "chai": "*"
+  }
+}
