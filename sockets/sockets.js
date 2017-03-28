@@ -22,6 +22,8 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
+			console.log("shareLocation");
+
 			socket.broadcast.emit("mapLocation", {id: socket.decoded_token.userId, lat: data.latitude, lon: data.longitude});
 
 		});
