@@ -63,9 +63,6 @@ module.exports.listen = function(server) {
 
 				}
 
-				console.log("emitting");
-				console.log(userData);
-
 				socket.broadcast.emit("mapLocation", userData);
 
 			});
