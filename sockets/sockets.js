@@ -87,8 +87,6 @@ module.exports.listen = function(server) {
 
 		const currentTime = Date.now();
 
-		console.log(locations);
-
 		for(let i = locations.length -1; i >= 0; i--) { //start from back of array to prevent array index of becoming corrupt during loop
 
 			if(locations[i].time - 15000 < currentTime) {
@@ -102,7 +100,7 @@ module.exports.listen = function(server) {
 
 		}
 
-	});
+	}, 3000);
 
 	return io;
 
