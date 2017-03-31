@@ -26,7 +26,7 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			knex.select("firstName, lastName, picture").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
+			knex.select("firstName", "lastName", "picture").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
 				let index;
 
@@ -63,7 +63,7 @@ module.exports.listen = function(server) {
 
 				}
 
-				socket.broadcast.emit("mapLocation", {id: socket.decoded_token.userId, lat: data.lat, lng: data.lng});
+				socket.broadcast.emit("mapLocation", userData);
 
 			});
 
