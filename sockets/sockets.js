@@ -46,7 +46,7 @@ module.exports.listen = function(server) {
 
 				const userData = {
 					id: socket.decoded_token.userId,
-					name: rows[0].firstName + rows[0].lastName,
+					name: rows[0].firstName + " " + rows[0].lastName,
 					picture: rows[0].picture,
 					lat: data.lat,
 					lng: data.lng,
@@ -87,14 +87,16 @@ module.exports.listen = function(server) {
 
 		const currentTime = Date.now();
 
+		console.log(locations);
+
 		for(let i = locations.length -1; i >= 0; i--) { //start from back of array to prevent array index of becoming corrupt during loop
 
 			if(locations[i].time - 15000 < currentTime) {
 
-				locations.splice(i, 1);
-
 				io.sockets.emit("removeLocation", {id: locations[i].id});
 				//@todo keep in mind while building client that this sends to ALL clients;
+
+				locations.splice(i, 1);
 
 			}
 
