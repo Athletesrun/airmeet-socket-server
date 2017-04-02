@@ -32,6 +32,11 @@ module.exports.listen = function(server) {
 
 				for(let i in locations) {
 
+
+					console.log('locationId', locations[i].id, typeof locations[i].id);
+					console.log('socketId', socket.decoded_token.userId, typeof socket.decoded_token.userId);
+					console.log(locations[i].id === socket.decoded_token.userId);
+
 					if(locations[i].id === socket.decoded_token.userId) {
 
 						index = i;
