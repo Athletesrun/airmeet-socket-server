@@ -76,7 +76,19 @@ module.exports.listen = function(server) {
 
 		});
 
-		socket.on("stopSharingLocation", (data) => {
+		socket.on("stopSharingLocation", () => {
+
+			for(let i in locations) {
+
+				if(locations[i].id === socket.decoded_token.userId) {
+
+					locations.splice(socket.decoded_token.userId, 1);
+
+					break;
+
+				}
+
+			}
 
 			socket.broadcast.emit("removeLocation", {id: socket.decoded_token.userId});
 
