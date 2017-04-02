@@ -55,13 +55,9 @@ module.exports.listen = function(server) {
 
 				if(index === undefined) {
 
-					console.log('pushing');
-
 					locations.push(userData);
 
 				} else {
-
-					console.log('replacing');
 
 					locations[index] = userData;
 
@@ -93,10 +89,12 @@ module.exports.listen = function(server) {
 
 		for(let i = locations.length -1; i >= 0; i--) { //start from back of array to prevent array index of becoming corrupt during loop
 
-			console.log('Old time', locations[i].time);
+			console.log('Old time', locations[i].time + 15000);
 			console.log('New time', currentTime);
 
-			if(locations[i].time + 20000 < currentTime) {
+			if(locations[i].time + 15000 < currentTime) {
+
+				console.log('Removing location');
 
 				io.sockets.emit("removeLocation", {id: locations[i].id});
 				//@todo keep in mind while building client that this sends to ALL clients;
