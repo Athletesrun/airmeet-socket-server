@@ -85,16 +85,9 @@ module.exports.listen = function(server) {
 
 	setInterval(() => {
 
-		const currentTime = Date.now();
-
 		for(let i = locations.length -1; i >= 0; i--) { //start from back of array to prevent array index of becoming corrupt during loop
 
-			console.log('Old time', locations[i].time + 15000);
-			console.log('New time', currentTime);
-
-			if(locations[i].time + 15000 < currentTime) {
-
-				console.log('Removing location');
+			if(locations[i].time + 15000 < Date.now()) {
 
 				io.sockets.emit("removeLocation", {id: locations[i].id});
 				//@todo keep in mind while building client that this sends to ALL clients;
