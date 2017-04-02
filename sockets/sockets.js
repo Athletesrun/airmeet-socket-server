@@ -55,9 +55,13 @@ module.exports.listen = function(server) {
 
 				if(index === undefined) {
 
+					console.log('pushing');
+
 					locations.push(userData);
 
 				} else {
+
+					console.log('replacing');
 
 					locations[index] = userData;
 
