@@ -26,7 +26,7 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			knex.select("firstName", "lastName", "picture").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
+			knex.select("picture").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
 				let index;
 
@@ -48,7 +48,6 @@ module.exports.listen = function(server) {
 
 				const userData = {
 					id: socket.decoded_token.userId,
-					name: rows[0].firstName + " " + rows[0].lastName,
 					picture: rows[0].picture,
 					lat: data.lat,
 					lng: data.lng,
@@ -87,11 +86,9 @@ module.exports.listen = function(server) {
 
 	setInterval(() => {
 
-		console.log(locations);
-
 		for(let i = locations.length -1; i >= 0; i--) { //start from back of array to prevent array index of becoming corrupt during loop
 
-			if(locations[i].time + 15000 < Date.now()) {
+			if(locations[i].time + 10000 < Date.now()) {
 
 				io.sockets.emit("removeLocation", {id: locations[i].id});
 				//@todo keep in mind while building client that this sends to ALL clients;
