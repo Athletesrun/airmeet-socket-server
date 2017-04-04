@@ -26,48 +26,51 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			knex.select("picture, event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
+			if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011565 && data.lng > -96.012365)) {
 
-				if(parseInt(rows[0].event) > 0) {
-					let index;
+				knex.select("picture, event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
-					for(let i in locations) {
+					if(parseInt(rows[0].event) > 0) {
+						let index;
 
-						if(locations[i].id === socket.decoded_token.userId) {
+						for(let i in locations) {
 
-							index = i;
+							if(locations[i].id === socket.decoded_token.userId) {
 
-							break;
+								index = i;
 
-						} else {
+								break;
 
-							index = undefined;
+							} else {
+
+								index = undefined;
+
+							}
 
 						}
 
+						const userData = {
+							id: socket.decoded_token.userId,
+							picture: rows[0].picture,
+							lat: data.lat,
+							lng: data.lng,
+							time: Date.now()
+						};
+
+						if(index === undefined) {
+
+							locations.push(userData);
+
+						} else {
+
+							locations[index] = userData;
+
+						}
+
+						socket.broadcast.emit("mapLocation", userData);
 					}
-
-					const userData = {
-						id: socket.decoded_token.userId,
-						picture: rows[0].picture,
-						lat: data.lat,
-						lng: data.lng,
-						time: Date.now()
-					};
-
-					if(index === undefined) {
-
-						locations.push(userData);
-
-					} else {
-
-						locations[index] = userData;
-
-					}
-
-					socket.broadcast.emit("mapLocation", userData);
-				}
-			});
+				});
+			}
 
 		});
 
