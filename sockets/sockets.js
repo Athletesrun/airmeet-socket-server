@@ -74,7 +74,11 @@ module.exports.listen = function(server) {
 
 						}
 
+						console.log('emitting');
+
 						socket.broadcast.emit("mapLocation", userData);
+					} else {
+						console.log('bad event');
 					}
 				});
 			} else {
