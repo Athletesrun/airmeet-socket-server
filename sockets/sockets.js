@@ -75,6 +75,8 @@ module.exports.listen = function(server) {
 						socket.broadcast.emit("mapLocation", userData);
 					}
 				});
+			} else {
+				console.log('bad coords');
 			}
 
 		});
