@@ -30,7 +30,7 @@ module.exports.listen = function(server) {
 
 				console.log('good coords');
 
-				knex.select("picture, event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
+				knex.select("picture", "event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
 					if(parseInt(rows[0].event) > 0) {
 
