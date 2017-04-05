@@ -26,11 +26,16 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011565 && data.lng > -96.012365)) {
+			if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011557 && data.lng > -96.012300)) {
+
+				console.log('good coords');
 
 				knex.select("picture, event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
 					if(parseInt(rows[0].event) > 0) {
+
+						cosole.log('good event');
+
 						let index;
 
 						for(let i in locations) {
