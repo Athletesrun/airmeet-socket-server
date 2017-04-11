@@ -71,6 +71,9 @@ module.exports.listen = function(server) {
 						}
 
 						socket.broadcast.emit("mapLocation", userData);
+
+						console.log("emitted location");
+
 					} else {
 						console.log('bad event');
 					}
