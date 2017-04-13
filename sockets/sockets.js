@@ -84,9 +84,9 @@ module.exports.listen = function(server) {
 
 		});
 
-		socket.on("getAllLocations", (data) => {
+		socket.on("getAllLocations", (callback) => {
 
-			socket.emit(locations);
+			callback(socket.emit(locations));
 
 		});
 
