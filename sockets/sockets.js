@@ -82,8 +82,6 @@ module.exports.listen = function(server) {
 
 		socket.on("getAllLocations", (callback) => {
 
-			console.log("running callback");
-
 			callback(locations);
 
 		});
