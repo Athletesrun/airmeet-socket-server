@@ -26,8 +26,6 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			console.log(data);
-
 			//if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011557 && data.lng > -96.012300)) {
 
 				knex.select("picture", "event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
@@ -72,8 +70,6 @@ module.exports.listen = function(server) {
 
 						socket.broadcast.emit("mapLocation", userData);
 
-						console.log("emitted location");
-
 					} else {
 						console.log('bad event');
 					}
@@ -85,6 +81,8 @@ module.exports.listen = function(server) {
 		});
 
 		socket.on("getAllLocations", (callback) => {
+
+			console.log("running callback");
 
 			callback(locations);
 
