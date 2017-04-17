@@ -26,7 +26,7 @@ module.exports.listen = function(server) {
 
 		socket.on("shareLocation", (data) => {
 
-			if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011557 && data.lng > -96.012300)) {
+			//if((data.lat < 41.244590 && data.lat > 41.243811) && (data.lng < -96.011557 && data.lng > -96.012300)) {
 
 				knex.select("picture", "event").from("users").where("id", "=", socket.decoded_token.userId).then((rows) => {
 
@@ -74,9 +74,9 @@ module.exports.listen = function(server) {
 						console.log('bad event');
 					}
 				});
-			} else {
+			/*} else {
 				console.log('bad coords');
-			}
+			}*/
 
 		});
 
